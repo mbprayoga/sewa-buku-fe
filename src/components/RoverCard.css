@@ -1,0 +1,76 @@
+/* RoverCard.css */
+
+.roverContainerBig {
+  padding-left: 20px;
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+  flex-direction: column; /* Set to landscape orientation */
+  background-color: #2c2e31;
+  border-radius: 10px; /* Adjust border radius as needed */
+  padding: 15px; /* Add padding for better spacing */
+  margin-bottom: 5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+  
+#roverTitle {
+  color: white;
+  font-size: 28px; /* Bigger size for the title */
+  font-weight: bold;
+  font-family: Verdana;
+  text-align: center; /* Center the title text */
+  margin-bottom: 10px; /* Adjust space below the title */
+  position: relative; /* Position relative for pseudo-element */
+}
+
+#roverTitle::before {
+  content: "";
+  position: absolute;
+  left: 50%; /* Position at the center of the title */
+  bottom: -4px;
+  width: 90%; /* Adjust width as needed */
+  height: 1.5px; /* Adjust height as needed */
+  background: linear-gradient(to right, transparent 0%, #616366 50%, transparent 100%);
+  transform: translateX(-50%); /* Center the gradient line */
+}
+
+
+.roverContainerBig {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.roverDescriptionBig {
+  color: #616366;
+  text-align: left;
+  font-family: Verdana;
+  flex-direction: column; /* Align the description vertically */
+  justify-content: left; /* Align the description to the left */
+  margin-left: 20px;
+  margin-bottom: 40px; /* Add some space between title and description */
+}
+
+.roverDescriptionBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.roverDescriptionBottom p {
+  color: #616366;
+  text-align: left;
+  font-family: Verdana;
+  margin-left: 20px; /* Add some space between title and description */
+}
+
+.roverDescriptionBottom p svg {
+  color: #6677cc; /* Set the color for the camera icon */
+  margin-right: 5px; /* Add some space between the icon and text */
+}
+
+/* Additional styling for the far right corner */
+.roverDescriptionBottom p:last-child {
+  margin-left: auto;
+  color: #6677cc;
+}
