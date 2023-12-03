@@ -1,0 +1,30 @@
+/* DashboardPage.css */
+
+.dashboard {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .dashboardHeader {
+    font-size: 2.5rem;
+    color: #333; /* Set your desired color */
+  }
+  
+  .dashboardTitle {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #555; /* Set your desired color */
+  }
+  
+  .dashboardText1 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: #666; /* Set your desired color */
+  }
+  
+  .dashboardText2 {
+    font-size: 1rem;
+    margin-top: 10px;
+    color: #777; /* Set your desired color */
+  }
+  

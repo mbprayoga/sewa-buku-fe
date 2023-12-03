@@ -1,0 +1,21 @@
+/* AdminPage.css */
+
+.AdminPageContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .AdminPageContainer h1 {
+    color: #333;
+  }
+  
+  .AdminRenterList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  /* Add more styles as needed */
+  
