@@ -1,3 +1,4 @@
+// AdminRentsCard.js
 import "./AdminRentsCard.css";
 import React from "react";
 
@@ -16,6 +17,9 @@ export default function AdminRentsCard(props) {
       <p>{props.peminjam.nama}</p>
       <p>Due: {formatDate(props.tanggal_kembali)}</p>
       <p>{props.status_bayar ? "Paid" : "Unpaid"}</p>
+
+      {/* Add Confirm Return button if status_bayar is true */}
+      {props.status_bayar && <button onClick={() => props.onConfirmReturn(props.id)}>Confirm Return</button>}
     </div>
   );
 }

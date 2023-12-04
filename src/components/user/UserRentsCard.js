@@ -17,7 +17,7 @@ export default function UserRentsCard(props) {
         {props.status_bayar ? (
           <p>Paid</p>
         ) : (
-          <button onClick={() => props.onPayClick(props.buku.id)}>Pay</button>
+          <button onClick={() => props.onPayClick(props.id)}>Pay</button>
         )}
       </div>
     );

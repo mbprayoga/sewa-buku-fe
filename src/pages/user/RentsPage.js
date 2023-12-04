@@ -1,9 +1,11 @@
+// UserRents.js
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import UserRentsCard from "../../components/user/UserRentsCard";
-import './RentsPage.css';
 
+import UserRentsCard from "../../components/user/UserRentsCard";
+
+import './RentsPage.css';
 
 function UserRents() {
   const [rent, setRent] = useState([]);
@@ -11,10 +13,6 @@ function UserRents() {
   const [isLoading, setIsLoading] = useState(false);
   const [userID, setUserID] = useState(null);
   const navigate = useNavigate();
-
-  const [selectedRental, setSelectedRental] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-  const [imageFile, setImageFile] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -38,6 +36,7 @@ function UserRents() {
             setRent(response.data.peminjaman);
             setIsLoaded(true);
             setIsLoading(false);
+            localStorage.setItem("cachedDataRents", JSON.stringify(response.data.peminjaman));
           }
         }
       } catch (err) {
@@ -63,37 +62,46 @@ function UserRents() {
     navigate('/user/returns');
   };
 
-  const handlePayClick = (rental) => {
-    setSelectedRental(rental);
-    setShowModal(true);
-  };
-
-  const handlePayConfirm = async () => {
+  
+  const onPayClick = async (bukuId) => {
     try {
-      if (!imageFile) {
-        console.error('Please select an image file.');
-        return;
-      }
-
-      const userDataResponse = await axios.get('http://localhost:3000/account/user-data', { withCredentials: true });
-      const userId = userDataResponse.data.additionalData.id;
-
-      const paymentData = new FormData();
-      paymentData.append('id_peminjam', userId);
-      paymentData.append('image', imageFile);
-
-      await axios.post(
-        `http://localhost:3000/user/peminjaman/${selectedRental.id}/bayar`,
-        paymentData,
-        { withCredentials: true }
-      );
-
-      console.log(`Payment for Rental ${selectedRental.id} completed successfully`);
-
-      setShowModal(false);
-      setIsLoaded(false);
+      // Create an input element to trigger the file selection dialog
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+  
+      // Listen for the file selection event
+      input.addEventListener('change', async (event) => {
+        const file = event.target.files[0];
+  
+        if (file) {
+          try {
+            const formData = new FormData();
+            formData.append('image', file);
+  
+            // Send image file to the server
+            await axios.patch(
+              `http://localhost:3000/user/peminjaman/${bukuId}/bayar`,
+              formData,
+              { withCredentials: true }
+            );
+  
+            // Handle successful image upload (e.g., show a notification)
+            console.log(`Payment uploaded successfully`);
+            // Reload the books after successful upload
+            setIsLoaded(false);
+          } catch (error) {
+            // Handle error uploading image (e.g., show an error message)
+            console.error('Error uploading image:', error.response?.data?.message || 'Internal Server Error');
+          }
+        }
+      });
+  
+      // Click the hidden input element to trigger the file selection dialog
+      input.click();
     } catch (error) {
-      console.error('Error making payment:', error.response?.data?.message || 'Internal Server Error');
+      // Handle error (e.g., show an error message)
+      console.error('Error selecting image:', error);
     }
   };
 
@@ -112,30 +120,12 @@ function UserRents() {
             <UserRentsCard
               buku={item.buku}
               status_bayar={item.status_bayar}
-              tanggal_pinjam={item.tanggal_pinjam}
               tanggal_kembali={item.tanggal_kembali}
-              denda={item.denda}
-              status_kembali={item.status_kembali}
-              onPayClick={() => handlePayClick(item)}
+              onPayClick={() => onPayClick(item.id)}
             />
           </Fragment>
         ))}
       </div>
-
-      {/* Modal for Payment Confirmation */}
-      {showModal && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={() => setShowModal(false)}>
-              &times;
-            </span>
-            <h2>Payment Confirmation</h2>
-            <p>Please upload an image of your payment receipt.</p>
-            <input type="file" onChange={(e) => setImageFile(e.target.files[0])} />
-            <button onClick={handlePayConfirm}>Confirm</button>
-          </div>
-        </div>
-      )}
     </>
   );
 }

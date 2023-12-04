@@ -1,3 +1,4 @@
+// AdminRents.js
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +7,7 @@ import AdminRentsCard from "../../components/admin/AdminRentsCard";
 
 import './RentsPage.css';
 
-function UserRents() {
+function AdminRents() {
     const [rent, setRent] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -45,6 +46,20 @@ function UserRents() {
         navigate('/admin/returns');
     };
 
+    const handleConfirmReturn = async (bukuId) => {
+        try {
+            // Add logic to confirm return (e.g., update UI, send request to server)
+
+            // For demonstration, let's assume there's an endpoint for confirming returns
+            await axios.patch(`http://localhost:3000/admin/peminjaman/${bukuId}/kembali`, {}, { withCredentials: true });
+
+            // Reload the rentals after successful confirmation
+            setIsLoaded(false);
+        } catch (error) {
+            console.error('Error confirming return:', error);
+        }
+    };
+
     return (
         <>
             <div className="userBooksTitleContainer">
@@ -65,6 +80,7 @@ function UserRents() {
                             tanggal_kembali={item.tanggal_kembali}
                             denda={item.denda}
                             status_kembali={item.status_kembali}
+                            onConfirmReturn={() => handleConfirmReturn(item.id)}
                         />
                     </Fragment>
                 ))}
@@ -73,4 +89,4 @@ function UserRents() {
     );
 }
 
-export default UserRents;
+export default AdminRents;
