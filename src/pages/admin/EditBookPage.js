@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const AdminEditBooks = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const { id } = useParams();
     const [bookData, setBookData] = useState({
         judul: '',
@@ -56,40 +56,78 @@ const AdminEditBooks = () => {
     };
 
     return (
-        <div>
-            <h2>Edit Book</h2>
-            <form>
-                <label>
+        <div style={styles.editBookContainer}>
+            <h2 style={styles.editBookTitle}>Edit Book</h2>
+            <form style={styles.editBookForm}>
+                <label style={styles.editBookLabel}>
                     Judul:
-                    <input type="text" name="judul" value={bookData.judul} onChange={handleInputChange} />
+                    <input type="text" name="judul" value={bookData.judul} onChange={handleInputChange} style={styles.editBookInput} />
                 </label>
                 <br />
-                <label>
+                <label style={styles.editBookLabel}>
                     Harga:
-                    <input type="number" name="harga" value={bookData.harga} onChange={handleInputChange} />
+                    <input type="number" name="harga" value={bookData.harga} onChange={handleInputChange} style={styles.editBookInput} />
                 </label>
                 <br />
-                <label>
+                <label style={styles.editBookLabel}>
                     Sinopsis:
-                    <textarea name="sinopsis" value={bookData.sinopsis} onChange={handleInputChange} />
+                    <textarea name="sinopsis" value={bookData.sinopsis} onChange={handleInputChange} style={styles.editBookInput} />
                 </label>
                 <br />
-                <label>
+                <label style={styles.editBookLabel}>
                     Genre:
-                    <input type="text" name="genre" value={bookData.genre} onChange={handleInputChange} />
+                    <input type="text" name="genre" value={bookData.genre} onChange={handleInputChange} style={styles.editBookInput} />
                 </label>
                 <br />
-                <label>
+                <label style={styles.editBookLabel}>
                     Penulis:
-                    <input type="text" name="penulis" value={bookData.penulis} onChange={handleInputChange} />
+                    <input type="text" name="penulis" value={bookData.penulis} onChange={handleInputChange} style={styles.editBookInput} />
                 </label>
                 <br />
-                <button type="button" onClick={handleUpdateBook}>
+                <button type="button" style={styles.updateButton} onClick={handleUpdateBook}>
                     Update Book
                 </button>
             </form>
         </div>
     );
+};
+
+const styles = {
+    editBookContainer: {
+        // Center-align the container
+        margin: '20px auto',
+        textAlign: 'center',
+        borderRadius: '8px',
+        width: '800px'
+    },
+    editBookTitle: {
+        // Add your title styles here
+        fontSize: '30px',
+    },
+    editBookForm: {
+        // Add your form styles here
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    editBookLabel: {
+        // Add your label styles here
+        margin: '10px 0',
+    },
+    editBookInput: {
+        // Add your input styles here
+        width: '100%',
+        padding: '4px',
+        margin: '5px 0',
+        borderRadius: '4px',
+        border: '1px solid #ccc',
+    },
+    updateButton: {
+        // Add your button styles here
+        backgroundColor: '#000',
+        color: '#fff',
+        borderRadius: '4px',
+        cursor: 'pointer',
+    },
 };
 
 export default AdminEditBooks;

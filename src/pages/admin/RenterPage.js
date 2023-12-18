@@ -22,9 +22,9 @@ function AdminRenter() {
   }, []);
 
   return (
-    <div>
+    <div className="adminPageContainer">
       <h1>Renter</h1>
-      <div>
+      <div className="adminRenterList">
         {peminjam.map((item) => (
           <AdminRenterCard
             key={item.id}

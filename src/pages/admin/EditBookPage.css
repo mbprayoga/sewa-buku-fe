@@ -1,0 +1,55 @@
+/* EditBookPage.css */
+
+.editBookContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+  
+  .editBookTitle {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .editBookForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .editBookLabel {
+    margin-bottom: 1px;
+    color: #333;
+  }
+  
+  .editBookInput {
+    padding: 8px;
+    margin-bottom: 1px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .editBookTextArea {
+    padding: 8px;
+    margin-bottom: 1px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .updateButton {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .updateButton:hover {
+    background-color: #2077b3;
+  }
+  

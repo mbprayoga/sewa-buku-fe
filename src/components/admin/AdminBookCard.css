@@ -58,27 +58,19 @@
     margin-bottom: 40px; /* Add some space between title and description */
   }
   
-  .roverDescriptionBottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .AdminBookCardContainer button {
+    background-color: #000; /* Blue background color */
+    color: #ffffff; /* White text color */
+    border: none;
+    padding: 8px 16px;
+    margin-top: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   
-  .roverDescriptionBottom p {
-    color: #616366;
-    text-align: left;
-    font-family: Verdana;
-    margin-left: 20px; /* Add some space between title and description */
+  .AdminBookCardContainer button:hover {
+    background-color: #000; /* Darker blue on hover */
   }
   
-  .roverDescriptionBottom p svg {
-    color: #6677cc; /* Set the color for the camera icon */
-    margin-right: 5px; /* Add some space between the icon and text */
-  }
-  
-  /* Additional styling for the far right corner */
-  .roverDescriptionBottom p:last-child {
-    margin-left: auto;
-    color: #6677cc;
-  }
   

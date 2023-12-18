@@ -10,22 +10,19 @@ import './RentsPage.css';
 function AdminRents() {
     const [rent, setRent] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [buktiBayarUrl, setBuktiBayarUrl] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
-            setIsLoading(true);
             try {
                 const response = await axios.get(`http://localhost:3000/admin/peminjaman?status_kembali=false`, { withCredentials: true });
                 if (response.status === 200) {
                     setRent(response.data.peminjaman);
                     setIsLoaded(true);
-                    setIsLoading(false);
                 }
             } catch (err) {
                 console.log(err);
-                setIsLoading(false);
             }
         };
 
@@ -48,16 +45,19 @@ function AdminRents() {
 
     const handleConfirmReturn = async (bukuId) => {
         try {
-            // Add logic to confirm return (e.g., update UI, send request to server)
-
-            // For demonstration, let's assume there's an endpoint for confirming returns
             await axios.patch(`http://localhost:3000/admin/peminjaman/${bukuId}/kembali`, {}, { withCredentials: true });
-
-            // Reload the rentals after successful confirmation
             setIsLoaded(false);
         } catch (error) {
             console.error('Error confirming return:', error);
         }
+    };
+
+    const handleCardClick = (buktiBayarUrl) => {
+        setBuktiBayarUrl(buktiBayarUrl);
+    };
+
+    const handleCloseModal = () => {
+        setBuktiBayarUrl('');
     };
 
     return (
@@ -81,10 +81,18 @@ function AdminRents() {
                             denda={item.denda}
                             status_kembali={item.status_kembali}
                             onConfirmReturn={() => handleConfirmReturn(item.id)}
+                            onClick={() => handleCardClick(item.bukti_bayar)}
                         />
                     </Fragment>
                 ))}
             </div>
+            {buktiBayarUrl && (
+                <div className="custom-modal" onClick={handleCloseModal}>
+                    <div className="modal-content" style={{ position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', backgroundColor: 'rgba(0, 0, 0, 0.8)' }}>
+                        <img src={buktiBayarUrl} alt="Bukti Bayar" style={{ maxWidth: '100%', maxHeight: '100%', margin: 'auto', display: 'block' }} />
+                    </div>
+                </div>
+            )}
         </>
     );
 }

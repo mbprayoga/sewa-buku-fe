@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './LoginPage.css'; // Assuming you have a separate CSS file
 
 const LoginPage = ({ onLogin }) => {
   const [username, setUsername] = useState('');
@@ -12,10 +13,10 @@ const LoginPage = ({ onLogin }) => {
 
   const handleLogin = async () => {
     try {
-        const response = await axios.post('http://localhost:3000/account/login', {
-            username,
-            password,
-          }, { withCredentials: true });
+      const response = await axios.post('http://localhost:3000/account/login', {
+        username,
+        password,
+      }, { withCredentials: true });
 
       // Assuming the server sends a 'role' in the response
       const role = response.data.role;
@@ -42,9 +43,9 @@ const LoginPage = ({ onLogin }) => {
   };
 
   return (
-    <div>
-      <h2>Login Page</h2>
-      <form>
+    <div className="login-container">
+      <h2>Login</h2>
+      <form className="login-form">
         <label>
           Username:
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -55,10 +56,10 @@ const LoginPage = ({ onLogin }) => {
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
         <br />
-        <button type="button" onClick={handleLogin}>Login</button>
-        <p style={{ color: 'red' }}>{errorMessage}</p>
+        <button type="button" onClick={handleLogin} className="login-button">Login</button>
+        <p className="error-message">{errorMessage}</p>
       </form>
-      <p>Don't have an account? <span style={{ color: 'blue', cursor: 'pointer' }} onClick={handleNavigateToRegister}>Sign up</span>.</p>
+      <p className="signup-text">Don't have an account? <span className="signup-link" onClick={handleNavigateToRegister}>Sign up</span>.</p>
     </div>
   );
 };

@@ -58,10 +58,7 @@ function BookPage() {
             <p id="books">Books</p>
             {/* Add a form for filtering by judul */}
             <form onSubmit={handleFilterSubmit}>
-              <label>
-                Judul:
-                <input type="text" value={judulFilter} onChange={handleFilterChange} />
-              </label>
+                <input type="text" value={judulFilter} onChange={handleFilterChange} placeholder="Search book" />
               <button type="submit">Filter</button>
             </form>
             <div className="booksContainerTop">

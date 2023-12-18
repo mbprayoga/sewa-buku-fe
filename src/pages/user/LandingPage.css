@@ -1,30 +1,75 @@
 /* DashboardPage.css */
 
-.dashboard {
+.columnDashboard {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row; /* Align children horizontally */
+    justify-content: space-between; /* Add space between the two elements */
+    align-items: center; /* Center items vertically */
+  }
+  
+  .dashboard {
     text-align: center;
     padding: 20px;
+    flex: 1; /* Let the dashboard take available space */
   }
   
-  .dashboardHeader {
-    font-size: 2.5rem;
-    color: #333; /* Set your desired color */
+  .dashboard-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 2px;
   }
   
-  .dashboardTitle {
-    font-size: 1.5rem;
-    margin-top: 10px;
-    color: #555; /* Set your desired color */
+  .dashboard-title {
+    font-size: 22px;
+    color: #ef2939;
   }
   
-  .dashboardText1 {
-    font-size: 1.2rem;
-    margin-top: 10px;
-    color: #666; /* Set your desired color */
+  .dashboard-text1 {
+    font-size: 40px;
+    color: #000;
+    font-weight: bold;
   }
   
-  .dashboardText2 {
-    font-size: 1rem;
-    margin-top: 10px;
-    color: #777; /* Set your desired color */
+  .dashboard-text2 {
+    font-size: 20px;
+    color: #333;
+    margin-top: 2px;
+  }
+
+  .dashboardImageContainer {
+    margin-top: 20px;
+    flex: 1; /* Let the container take available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dashboardImage {
+    max-width: 60%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .logoutButtonContainer {
+    display: flex;
+    justify-content: flex-end; /* Move the container to the right */
+    margin-top: 10px; /* Add some margin for spacing */
+  }
+  
+  .logoutButton {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #000;
+    margin-right: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .logoutButton:hover {
+    background-color: #2980b9;
   }
   

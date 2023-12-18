@@ -1,0 +1,57 @@
+/* RegisterPage.css */
+
+.register-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .register-form label {
+    display: block;
+    margin-bottom: 2px;
+  }
+  
+  .register-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 2px;
+    box-sizing: border-box;
+  }
+  
+  .register-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .register-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .login-text {
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  .login-link {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .login-link:hover {
+    color: darkblue;
+  }
+  

@@ -1,21 +1,41 @@
 /* AdminRenterCard.css */
 
 .AdminRenterCardContainer {
+  width: 350px;
   border: 1px solid #ddd;
   padding: 16px;
   margin: 16px;
   border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; /* Add a subtle transition effect on hover */
+  margin-left: 570px;
+  &:hover {
+    transform: translateY(-4px); /* Lift the card slightly on hover */
+  }
 }
 
-.AdminRenterCardContainer h2 {
+.AdminRenterCardContainer .name {
   color: #333;
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 
-.AdminRenterCardContainer p {
+.AdminRenterCardContainer .info {
   color: #666;
   margin: 8px 0;
+  font-size: 14px;
+}
+
+/* Styling for specific text elements */
+.AdminRenterCardContainer .username {
+  font-weight: bold;
+  color: #3498db; /* Blue color */
+}
+
+.AdminRenterCardContainer .label {
+  color: #555;
+  font-weight: bold;
 }
 
 /* AdminPage.css */
@@ -24,14 +44,23 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 16px;
+  text-align: center; /* Center the content */
 }
 
-.AdminPageContainer h1 {
+.AdminPageContainer .title {
   color: #333;
+  margin-bottom: 16px;
 }
 
 .AdminRenterList {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+/* Responsive styling for AdminRenterCardContainer in smaller screens */
+@media (max-width: 600px) {
+  .AdminRenterCardContainer {
+    width: calc(50% - 32px); /* Two cards per row on smaller screens with some margin */
+  }
 }

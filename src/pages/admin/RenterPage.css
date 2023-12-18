@@ -1,21 +1,26 @@
 /* AdminPage.css */
 
-.AdminPageContainer {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 16px;
-    text-align: center;
-  }
-  
-  .AdminPageContainer h1 {
+/* AdminPage.css */
+
+.adminPageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.adminPageContainer h1 {
     color: #333;
-  }
-  
-  .AdminRenterList {
+    margin-bottom: 16px;
+}
+
+.adminRenterList {
+    
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  
-  /* Add more styles as needed */
-  
+    justify-content: center;
+}
+
+
+/* Add more styles as needed */

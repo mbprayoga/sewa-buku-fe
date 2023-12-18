@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+import './RegisterPage.css'
+
 const RegisterPage = () => {
   const [nama, setNama] = useState('');
   const [username, setUsername] = useState('');
@@ -42,9 +44,9 @@ const RegisterPage = () => {
   };
 
   return (
-    <div>
-      <h2>Register Page</h2>
-      <form>
+    <div className="register-container">
+      <h2>Register</h2>
+      <form className="register-form">
         <label>
           Name:
           <input type="text" value={nama} onChange={(e) => setNama(e.target.value)} />
@@ -70,10 +72,10 @@ const RegisterPage = () => {
           <input type="text" value={alamat} onChange={(e) => setAlamat(e.target.value)} />
         </label>
         <br />
-        <button type="button" onClick={handleRegister}>Register</button>
-        <p style={{ color: 'red' }}>{errorMessage}</p>
+        <button type="button" onClick={handleRegister} className="register-button">Register</button>
+        <p className="error-message">{errorMessage}</p>
       </form>
-      <p>Already have an account? <span style={{ color: 'blue', cursor: 'pointer' }} onClick={handleNavigateToLogin}>Log in</span>.</p>
+      <p className="login-text">Already have an account? <span className="login-link" onClick={handleNavigateToLogin}>Log in</span>.</p>
     </div>
   );
 };

@@ -19,6 +19,7 @@ export default function AdminBookCard(props) {
             <p>{props.genre}</p>
             <p>{props.sinopsis}</p>
             <p>{props.harga}</p>
+            <p>{props.ketersediaan ? 'Available' : 'Unavailable'}</p>
             {/* Add Edit and Delete buttons */}
             <button onClick={handleEditClick}>Edit</button>
             <button onClick={props.handleUpImageClick}>Upload Image</button>
